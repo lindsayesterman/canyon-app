@@ -83,12 +83,12 @@ export const Modal = () => {
         style={[
           styles.sched,
           showDate
-            ? { backgroundColor: "#a1ddff" }
-            : { backgroundColor: "whitesmoke" },
+            ? { backgroundColor: "#B6D0E2" }
+            : { backgroundColor: "#e8e8e8" },
         ]}
-        onPress={() => {
-          showDate && this.props.questions;
-        }}
+        // onPress={() => {
+        //   showDate && questions;
+        // }}
       >
         <Text style={{ textAlign: "center" }}>Schedule</Text>
       </Pressable>

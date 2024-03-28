@@ -64,7 +64,7 @@ export default class Select extends Component {
     for (let i = 0; i < checks.length; i++) {
       Selected.push(keys[i]);
     }
-    alert(Selected);
+    console.log(Selected);
   }
 
   render() {
