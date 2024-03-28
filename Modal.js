@@ -83,7 +83,7 @@ export const Modal = () => {
         style={[
           styles.sched,
           showDate
-            ? { backgroundColor: "#C9DBC9" }
+            ? { backgroundColor: "#a1ddff" }
             : { backgroundColor: "whitesmoke" },
         ]}
         onPress={() => {
@@ -98,28 +98,24 @@ export const Modal = () => {
 
 const styles = {
   date: {
-    backgroundColor: "#FFB77A",
+    backgroundColor: "#C9DBC9",
     padding: 10,
     color: "black",
     borderRadius: 8,
     marginLeft: 10,
     marginTop: 10,
   },
-  picker: {
-    // marginBottom: 20,
-  },
   selectedDate: {
     marginLeft: 35,
     fontSize: 16,
   },
   sched: {
-    backgroundColor: "#C9DBC9",
-    width: 100,
+    width: 350,
     padding: 10,
     color: "black",
     borderRadius: 8,
     marginLeft: "auto",
-    marginRight: 40,
+    marginRight: "auto",
     marginTop: 20,
   },
   schedule: {

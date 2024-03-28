@@ -75,7 +75,6 @@ export default class Select extends Component {
         </Text>
         {this.renderQuestions()}
         <TouchableOpacity onPress={this.getSelectedQuestions}>
-          <Text>hey</Text>
         </TouchableOpacity>
         <Modal questions={this.getSelectedQuestions} />
         {console.log(this.getSelectedQuestions)}
@@ -103,29 +102,3 @@ const styles = {
     fontSize: 16,
   },
 };
-
-{
-  /* <FlatList
-          data={[
-            { key: "What is your earliest memory?" },
-            {
-              key: "What area in your life are you looking to improve?",
-            },
-            {
-              key: "What is something that is important to you that you never really talk about?",
-            },
-            { key: "What's the best advice you've ever received?" },
-            {
-              key: "What's a deep or difficult question you've been pondering lately?",
-            },
-            {
-              key: "How would you describe your approach to your career so far?",
-            },
-            {
-              key: "What's something you're absolutely convinced is going to happen in the future?",
-            },
-            { key: "What's something you recently learned?" },
-          ]}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-        /> */
-}
