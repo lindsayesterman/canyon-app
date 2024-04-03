@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   Text,
@@ -15,28 +15,63 @@ import { Modal } from "./Modal";
 
 const questionsData = require("./Questions.json");
 
-export default class Select extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: questionsData,
-      selectedQuestions: [],
-    };
-  }
-  onchecked(id) {
-    const data = this.state.data;
-    const index = data.findIndex((x) => x.id === id);
-    data[index].checked = !data[index].checked;
-    this.setState(data);
-  }
-  renderQuestions() {
-    return this.state.data.map((item, key) => {
+export default Select = () => {
+  const [data, setData] = React.useState(questionsData);
+  const [selectedQuestions, setSelectedQuestions] = React.useState([]);
+
+  useEffect(() => {
+    setData(questionsData);
+  }, []);
+
+  // const onchecked = (id) => {
+  //   const newData = data.map((item) => {
+  //     if (item.id === id) {
+  //       setSelectedQuestions(selectedQuestions.push(item));
+  //       return { ...item, checked: !item.checked };
+  //     }
+  //     return item;
+  //   });
+  //   setData(newData);
+  //   console.log(data);
+  // };
+
+  const onchecked = (id) => {
+    const newData = data.map((item) => {
+      if (item.id === id) {
+        // Toggle the checked state
+        const updatedItem = { ...item, checked: !item.checked };
+        setData((prevData) =>
+          prevData.map((dataItem) =>
+            dataItem.id === id ? updatedItem : dataItem
+          )
+        );
+
+        if (updatedItem.checked) {
+          // If the item is now checked, add it to the selectedQuestions
+          setSelectedQuestions((prevSelected) => [
+            ...prevSelected,
+            updatedItem,
+          ]);
+        } else {
+          // If the item is now unchecked, remove it from the selectedQuestions
+          setSelectedQuestions((prevSelected) =>
+            prevSelected.filter((question) => question.id !== id)
+          );
+        }
+        return updatedItem;
+      }
+      return item;
+    });
+  };
+
+  renderQuestions = () => {
+    return data.map((item, key) => {
       return (
         <TouchableOpacity
           key={key}
           style={{ flexDirection: "row", alignItems: "center" }}
           onPress={() => {
-            this.onchecked(item.id);
+            onchecked(item.id);
           }}
         >
           <Image
@@ -55,33 +90,27 @@ export default class Select extends Component {
         </TouchableOpacity>
       );
     });
-  }
+  };
 
-  getSelectedQuestions() {
-    var keys = this.state.data.map((t) => t.key);
-    // var checks = this.state.data.map((t) => t.checked);
-    let Selected = [];
-    for (let i = 0; i < checks.length; i++) {
-      Selected.push(keys[i]);
-    }
-    console.log(Selected);
-  }
+  getSelectedQuestions = () => {
+    // Filter out the selected questions based on their checked status
+    const selected = data.filter((item) => item.checked);
+    setSelectedQuestions(selected); // Assuming you want to update the state as well
+    console.log("yo yo" + selected)
+    return selected;
+  };
 
-  render() {
-    return (
-      <View>
-        <Text style={styles.textStyle}>
-          Select 3 new questions for this week!
-        </Text>
-        {this.renderQuestions()}
-        <TouchableOpacity onPress={this.getSelectedQuestions}>
-        </TouchableOpacity>
-        <Modal questions={this.getSelectedQuestions} />
-        {console.log(this.getSelectedQuestions)}
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <Text style={styles.textStyle}>
+        Select 3 new questions for this week!
+      </Text>
+      {this.renderQuestions()}
+      {/* <TouchableOpacity onPress={this.getSelectedQuestions}></TouchableOpacity> */}
+      <Modal questions={selectedQuestions} />
+    </View>
+  );
+};
 
 const styles = {
   textStyle: {

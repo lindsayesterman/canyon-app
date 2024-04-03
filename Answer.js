@@ -14,8 +14,6 @@ import {
 import { Modal } from "./Modal";
 import questionsData from "./Questions.json";
 
-// const questionsData = require("./Questions.json");
-
 export default Answer = () => {
   const [data, setData] = React.useState(null);
   const [textInputs, setTextInputs] = React.useState({});
@@ -28,7 +26,6 @@ export default Answer = () => {
     });
     setTextInputs(initialTextInputs);
   }, []);
-
 
   const onChangeText = (id, newText) => {
     setTextInputs((prevTextInputs) => ({
@@ -46,18 +43,13 @@ export default Answer = () => {
             <Text style={styles.options}>{item.key}</Text>
             <TextInput
               style={styles.input}
-              onChangeText={(newText) => onChangeText(item.id, newText)} // Pass the question ID to the handler
-              value={textInputs[item.id]} // Use the text corresponding to the question ID
+              onChangeText={(newText) => onChangeText(item.id, newText)}
+              value={textInputs[item.id]}
               placeholder="Enter answer here"
             />
           </View>
         ))}
-      <Pressable
-        style={styles.sched}
-        // onPress={() => {
-        //   showDate && questions;
-        // }}
-      >
+      <Pressable style={styles.sched}>
         <Text style={{ textAlign: "center" }}>Submit</Text>
       </Pressable>
     </View>

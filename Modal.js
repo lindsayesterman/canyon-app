@@ -14,11 +14,17 @@ import {
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-export const Modal = () => {
+export const Modal = ({ questions }) => {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [showDate, setShowDate] = useState(false);
+
+  const handlePress = () => {
+    if (showDate) {
+      console.log(questions); // Log the questions, or replace with your desired action
+    }
+  };
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -79,16 +85,13 @@ export const Modal = () => {
         )}
       </View>
       <Pressable
-        // style={styles.sched}
         style={[
           styles.sched,
           showDate
             ? { backgroundColor: "#B6D0E2" }
             : { backgroundColor: "#e8e8e8" },
         ]}
-        // onPress={() => {
-        //   showDate && questions;
-        // }}
+        onPress={handlePress}
       >
         <Text style={{ textAlign: "center" }}>Schedule</Text>
       </Pressable>
