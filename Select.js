@@ -17,7 +17,9 @@ const questionsData = require("./Questions.json");
 
 export default Select = () => {
   const [data, setData] = React.useState(questionsData);
-  const [selectedQuestions, setSelectedQuestions] = React.useState([]);
+  const [selectedQuestions, setSelectedQuestions] = React.useState([
+    // { id: 1, key: "What is your earliest memory?" },
+  ]);
 
   useEffect(() => {
     setData(questionsData);
@@ -96,7 +98,7 @@ export default Select = () => {
     // Filter out the selected questions based on their checked status
     const selected = data.filter((item) => item.checked);
     setSelectedQuestions(selected); // Assuming you want to update the state as well
-    console.log("yo yo" + selected)
+    console.log("hey" + selected);
     return selected;
   };
 

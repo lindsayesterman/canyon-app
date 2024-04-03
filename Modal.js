@@ -11,6 +11,8 @@ import {
   Image,
   Pressable,
   SafeAreaView,
+  Alert,
+  Share,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
@@ -20,9 +22,32 @@ export const Modal = ({ questions }) => {
   const [show, setShow] = useState(false);
   const [showDate, setShowDate] = useState(false);
 
-  const handlePress = () => {
+  const onShare = async () => {
     if (showDate) {
-      console.log(questions); // Log the questions, or replace with your desired action
+      var listOfQuestions = "";
+      let count = 1;
+      Object.keys(questions).map(function (id) {
+        listOfQuestions += "\n" + count + ". " + questions[id].key;
+        count++;
+      });
+    }
+    try {
+      const result = await Share.share({
+        title: "QOTWs",
+        url: "https://reactnative.dev/docs/share?language=javascript",
+        message: `${listOfQuestions}`,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(error.message);
     }
   };
 
@@ -91,7 +116,7 @@ export const Modal = ({ questions }) => {
             ? { backgroundColor: "#B6D0E2" }
             : { backgroundColor: "#e8e8e8" },
         ]}
-        onPress={handlePress}
+        onPress={onShare}
       >
         <Text style={{ textAlign: "center" }}>Schedule</Text>
       </Pressable>
