@@ -25,22 +25,9 @@ export default Select = () => {
     setData(questionsData);
   }, []);
 
-  // const onchecked = (id) => {
-  //   const newData = data.map((item) => {
-  //     if (item.id === id) {
-  //       setSelectedQuestions(selectedQuestions.push(item));
-  //       return { ...item, checked: !item.checked };
-  //     }
-  //     return item;
-  //   });
-  //   setData(newData);
-  //   console.log(data);
-  // };
-
   const onchecked = (id) => {
     const newData = data.map((item) => {
       if (item.id === id) {
-        // Toggle the checked state
         const updatedItem = { ...item, checked: !item.checked };
         setData((prevData) =>
           prevData.map((dataItem) =>
@@ -49,13 +36,11 @@ export default Select = () => {
         );
 
         if (updatedItem.checked) {
-          // If the item is now checked, add it to the selectedQuestions
           setSelectedQuestions((prevSelected) => [
             ...prevSelected,
             updatedItem,
           ]);
         } else {
-          // If the item is now unchecked, remove it from the selectedQuestions
           setSelectedQuestions((prevSelected) =>
             prevSelected.filter((question) => question.id !== id)
           );
@@ -105,10 +90,9 @@ export default Select = () => {
   return (
     <View>
       <Text style={styles.textStyle}>
-        Select 3 new questions for this week!
+        Select 3 new questions for next week!
       </Text>
       {this.renderQuestions()}
-      {/* <TouchableOpacity onPress={this.getSelectedQuestions}></TouchableOpacity> */}
       <Modal questions={selectedQuestions} />
     </View>
   );
