@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
+import { Text, View, Pressable, TextInput } from "react-native";
 
 export default function Submitted({ data, textInputs, onChangeText }) {
   const [onEdit, setOnEdit] = React.useState(false);

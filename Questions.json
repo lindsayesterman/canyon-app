@@ -1,12 +1,16 @@
 [
-  { "id": 1, "key": "What is your earliest memory?" },
+  { "id": 0, "key": "What is your earliest memory?" },
   {
-    "id": 2,
+    "id": 1,
     "key": "What area in your life are you looking to improve?"
   },
   {
-    "id": 3,
+    "id": 2,
     "key": "What is something that is important to you that you never really talk about?"
+  },
+  {
+    "id": 3,
+    "key": "What motivates you?"
   },
   { "id": 4, "key": "What's the best advice you've ever received?" },
   {
