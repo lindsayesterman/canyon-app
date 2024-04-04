@@ -33,7 +33,11 @@ export default Answer = () => {
   return (
     <View>
       {submitClicked ? (
-        <Submitted />
+        <Submitted
+          data={data}
+          textInputs={textInputs}
+          onChangeText={onChangeText}
+        />
       ) : (
         <View>
           <Text style={styles.textStyle}>Answer this week’s questions.</Text>
@@ -51,9 +55,7 @@ export default Answer = () => {
               </View>
             ))}
           <Pressable style={styles.sched} onPress={handleSubmitClicked}>
-            {/* <Link to={{ screen: "Submitted", params: { id: "jane" } }}> */}
             <Text style={{ textAlign: "center" }}>Submit</Text>
-            {/* </Link> */}
           </Pressable>
         </View>
       )}
