@@ -12,22 +12,26 @@ export default Answer = () => {
       {
         person: "Julia",
         text: "Going to the park and swinging as high as I could.",
+        photo: "ex.png",
       },
-      { person: "James", text: "All areas lol" },
+      { person: "James", text: "All areas lol", photo: "ex2.png" },
       {
         person: "Jerry",
         text: "My brother Jeramayah and I have such a good relationship. Thankful for you bro.",
+        photo: "ex3.png",
       },
     ],
     [
       {
-        person: "Test",
+        person: "Julia",
         text: "Yes.",
+        photo: "ex.png",
       },
-      { person: "adfs", text: "Aadsfa" },
+      { person: "James", text: "Aadsfa", photo: "ex2.png" },
       {
-        person: "afsd",
+        person: "Jerry",
         text: "Masadf",
+        photo: "ex3.png",
       },
     ],
   ]);
@@ -36,7 +40,6 @@ export default Answer = () => {
   //   "lindsay":["hi","hey","huh"],
   //   "name":["hi","hey","huh"],
   // }
-
 
   useEffect(() => {
     setData(questionsData);
@@ -48,8 +51,8 @@ export default Answer = () => {
   }, []);
 
   return (
-    <ScrollView>
-      <Text style={styles.textStyle}>Responses</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.textStyle}>Check out this week's responses 🙌</Text>
       <Text style={styles.sub}>Shoutout to Miles for selecting these Qs!</Text>
       {/* {Array.isArray(data) &&
         data.slice(0, 3).map((item) => (
@@ -61,6 +64,7 @@ export default Answer = () => {
             />
           </View>
         ))} */}
+        
       {Array.isArray(data) &&
         data.slice(0, answers.length).map((dataItem, dataIndex) => (
           <React.Fragment key={dataItem.id}>
@@ -70,7 +74,13 @@ export default Answer = () => {
               {answers[dataIndex] &&
                 answers[dataIndex].map((answer, answerIndex) => (
                   <View key={answerIndex}>
-                    <Response person={answer.person} text={answer.text} />
+                    {console.log("./" + answer.photo)}
+                    
+                    <Response
+                      photo={answer.photo}
+                      person={answer.person}
+                      text={answer.text}
+                    />
                   </View>
                 ))}
             </View>
@@ -81,22 +91,35 @@ export default Answer = () => {
 };
 
 const styles = {
+  container: {
+    backgroundColor: "#121418",
+    flex: 1,
+  },
   textStyle: {
     fontWeight: "bold",
     paddingTop: 70,
     paddingBottom: 10,
-    paddingLeft: 10,
-    fontSize: 19,
+    // paddingLeft: 10,
+    fontSize: 30,
+    color: "white",
+    textAlign: "center",
   },
   sub: {
-    paddingBottom: 10,
-    paddingLeft: 10,
-    fontSize: 16,
+    padding: 10,
+    fontSize: 18,
+    color: "#6C6E77",
+    // fontSize: 23,
+    // color: "#6C6E77",
+    // textAlign: "center",
+    // width: "84%",
+    // marginLeft: "auto",
+    // marginRight: "auto",
   },
   options: {
     margin: 12,
     fontSize: 15,
     fontWeight: "bold",
+    color: "white",
   },
   sched: {
     padding: 10,

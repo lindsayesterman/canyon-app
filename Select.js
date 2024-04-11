@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   View,
+  ScrollView,
   FlatList,
   TouchableOpacity,
   CheckBox,
@@ -96,12 +97,12 @@ export default Select = () => {
       return (
         <TouchableOpacity
           key={key}
-          style={{ flexDirection: "row", alignItems: "center" }}
+          style={!item.checked ? styles.box : styles.boxChecked}
           onPress={() => {
             onchecked(item.id);
           }}
         >
-          <Image
+          {/* <Image
             style={styles.tinyImg}
             source={
               !item.checked
@@ -112,7 +113,7 @@ export default Select = () => {
             onValueChange={() => {
               this.onchecked(item.id);
             }}
-          />
+          /> */}
           <Text style={styles.options}>{item.key}</Text>
         </TouchableOpacity>
       );
@@ -128,36 +129,64 @@ export default Select = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle}>
-        Select 3 new questions for next week!
+    <ScrollView style={styles.container}>
+      <Text style={[styles.textStyle, { paddingTop: 70 }]}>
+        Julia, it's your turn! 🎉 🙌
       </Text>
+      <Text style={styles.subTextStyle}> Pick this week's questions!</Text>
       {this.renderQuestions()}
       <Modal questions={selectedQuestions} />
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = {
   container: {
-    // backgroundColor: "#1E2029",
-    // flex: 1,
+    backgroundColor: "#121418",
+    flex: 1,
+  },
+  box: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#1E2029",
+    margin: 10,
+    padding: 10,
+    paddingBottom: 10,
+    borderRadius: 4,
+  },
+  boxChecked: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#8296E1",
+    margin: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 4,
+    paddingLeft: 10,
   },
   textStyle: {
     fontWeight: "bold",
-    paddingTop: 70,
     paddingBottom: 20,
-    paddingLeft: 30,
+    paddingLeft: 10,
     fontSize: 18,
+    color: "#FFFFFF",
+  },
+  subTextStyle: {
+    paddingBottom: 20,
+    paddingLeft: 10,
+    fontSize: 18,
+    color: "#FFFFFF",
   },
   tinyImg: {
     width: 18,
     height: 18,
     margin: 5,
-    marginLeft: 30,
+    marginLeft: 10,
+    marginRight: 10,
   },
   options: {
-    marginRight: 60,
+    marginRight: 20,
     fontSize: 16,
+    color: "#FFFFFF",
   },
 };
