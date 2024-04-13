@@ -38,14 +38,14 @@ export default Select = () => {
   // }, [])
 
   async function getDataFromBackend() {
-    const url = "54.210.61.111:80/groups";
+    const url = "http://joincanyon.org/groups";
     const options = {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
         Authorization:
-          "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImYyOThjZDA3NTlkOGNmN2JjZTZhZWNhODExNmU4ZjYzMDlhNDQwMjAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY2FueW9uLTUyZDY2IiwiYXVkIjoiY2FueW9uLTUyZDY2IiwiYXV0aF90aW1lIjoxNzEyNjkxMTczLCJ1c2VyX2lkIjoiZzIzS01kZXJHOVVjZ2QySWhYbkhFMTBUeVBVMiIsInN1YiI6ImcyM0tNZGVyRzlVY2dkMkloWG5IRTEwVHlQVTIiLCJpYXQiOjE3MTI2OTExNzMsImV4cCI6MTcxMjY5NDc3MywiZW1haWwiOiJhbmRyZXdsdWx1MjAxMkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYW5kcmV3bHVsdTIwMTJAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.dYeeUpc4qIDG1B80_3ANumgt1GM42x5Hq4Vi6xvo23krpYRob4iDGM91vND1tkZew5uDdnYnmJioOcXCcdefSfQ6QpiZ-0CHSYfME7XUFIWJxfI9oPMs8klJ3dwSriINkuKGSsw_xqvmJpgZUF0DcfHZfqnxlItZ8HBY7_N2OwKtUTLG67Y0G0qBO1UXthiT_QN7QWf0JlEQavFBzoNoy1znxTDhTciyzxu_P4dXw_ghcnJ3y3S__3rdaXuZLFXnZ0blpe8ciuDSXNKavpF_zyVYYWDalxPVcBw07dzIWSzoX5tzQldvHR7QEUQC_vYtvD-b3XhO3BlifroqJp_rTg",
+          "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImYyOThjZDA3NTlkOGNmN2JjZTZhZWNhODExNmU4ZjYzMDlhNDQwMjAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY2FueW9uLTUyZDY2IiwiYXVkIjoiY2FueW9uLTUyZDY2IiwiYXV0aF90aW1lIjoxNzEzMDI4NzQ2LCJ1c2VyX2lkIjoiZzIzS01kZXJHOVVjZ2QySWhYbkhFMTBUeVBVMiIsInN1YiI6ImcyM0tNZGVyRzlVY2dkMkloWG5IRTEwVHlQVTIiLCJpYXQiOjE3MTMwMjg3NDYsImV4cCI6MTcxMzAzMjM0NiwiZW1haWwiOiJhbmRyZXdsdWx1MjAxMkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYW5kcmV3bHVsdTIwMTJAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.O6MsDbPxzOhNsc0bjurJEysb_7I-8_qDXYqkTFImCF3a_KfXr-r9aT_2xQPgMk1zupaV_bOK0MfEMvVcWKVPuKxz_cBRGVC6jYa9JTpXFiSjEMWsOGkqNhBxOCH6jR0VMe88lmwvakVltt5m8UPu4i8aXKmeSif8E7Qo6XZ1YkXvcAbUEkuhdWZaVgRWntGYiBqlrZqU0ooAmS506qPYInwse3dWeqC99lDYxIIrDIfcu5UYd55SNEhFf6-VH7h1G3tFkW7yWZpw2ZV2GpfUoKCA9gxZxyZHezJaolJyNoFe_oE8tF15VULT7kD6nR21muRDdYXbx6-Tu6LnLdtWyA",
       },
     };
     fetch(url, options)
@@ -56,7 +56,7 @@ export default Select = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.status);
+        console.log("asdfads" + data[0].name);
         console.log("hello");
       })
       .catch((e) => {
